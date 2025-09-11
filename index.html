@@ -1,241 +1,237 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PW Free Access</title>
   <style>
+    /* Reset */
+    *{margin:0;padding:0;box-sizing:border-box;}
+
     body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #121212;
-      display: flex;
-      justify-content: center;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+      color:#fff;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      min-height:100vh;
+      overflow-x:hidden;
     }
-    .container {
-      width: 100%;
-      max-width: 450px;
-      background: #1e1e1e;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      overflow-x: hidden;
-      box-shadow: 0 0 25px rgba(0,0,0,0.5);
-    }
+
+    /* Header */
     header {
-      width: 100%;
-      padding: 15px;
-      background: linear-gradient(135deg, #ff416c, #ff4b2b);
-      color: white;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 18px;
-      font-weight: bold;
-      letter-spacing: 1px;
+      width:100%;
+      padding:15px 25px;
+      background:linear-gradient(90deg,#141E30,#243B55);
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      box-shadow:0 3px 10px rgba(0,0,0,0.5);
     }
-    header nav a {
-      color: #fff;
-      margin-left: 15px;
-      text-decoration: none;
-      font-size: 14px;
+    .logo {
+      font-size:1.5rem;
+      font-weight:800;
+      letter-spacing:2px;
+      background:linear-gradient(45deg,#ff512f,#dd2476);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
     }
+    nav a {
+      margin-left:20px;
+      text-decoration:none;
+      font-weight:600;
+      color:#fff;
+      transition:0.3s;
+    }
+    nav a:hover { color:#ff512f; }
+
+    /* Content Area */
+    .content {
+      width:100%;
+      max-width:450px;
+      aspect-ratio:9/16;
+      padding:15px;
+      overflow-y:auto;
+      background:rgba(255,255,255,0.05);
+      border-radius:15px;
+      margin:20px auto;
+    }
+
     .image-box {
-      width: 90%;
-      margin: 10px 0;
+      margin:10px 0;
     }
     .image-box img {
-      width: 100%;
-      border-radius: 8px;
-      display: block;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
-      transition: transform 0.3s ease;
+      width:100%;
+      border-radius:12px;
+      box-shadow:0 3px 8px rgba(0,0,0,0.6);
     }
-    .image-box img:hover {
-      transform: scale(1.03);
-    }
+
     .timer {
-      font-size: 18px;
-      margin: 10px 0;
-      font-weight: bold;
-      color: #ffdd57;
+      text-align:center;
+      font-size:1.2rem;
+      margin:10px 0;
+      font-weight:600;
+      color:#ffdf6c;
     }
+
     .btn {
-      display: none;
-      padding: 12px 20px;
-      border: none;
-      font-size: 16px;
-      margin: 12px 0;
-      cursor: pointer;
-      color: #fff;
-      transition: all 0.4s ease-in-out;
-      width: 85%;
-      text-transform: uppercase;
-      font-weight: bold;
+      display:block;
+      width:100%;
+      padding:12px;
+      margin:12px 0;
+      border:none;
+      font-size:1rem;
+      font-weight:700;
+      border-radius:10px;
+      cursor:pointer;
+      text-transform:uppercase;
+      transition:0.3s ease;
     }
-    /* Verify Button */
     .btn.verify {
-      border-radius: 6px;
-      background: linear-gradient(135deg, #28a745, #3ddc84);
+      background:linear-gradient(90deg,#00c6ff,#0072ff);
+      color:#fff;
+      display:none;
     }
-    .btn.verify:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 15px #3ddc84;
-    }
-    /* Continue Button */
+    .btn.verify:hover { transform:scale(1.05); }
+
     .btn.continue {
-      border-radius: 6px; /* square feel */
-      background: linear-gradient(135deg, #007bff, #00c6ff);
-      animation: pulse 1.5s infinite;
+      background:linear-gradient(90deg,#ff512f,#f09819);
+      color:#fff;
+      display:none;
+      border-radius:0; /* square */
+      animation:pulse 1.5s infinite;
     }
-    .btn.continue:hover {
-      transform: translateY(-3px) scale(1.02);
-      box-shadow: 0 0 20px #00c6ff;
-    }
+    .btn.continue:hover { transform:scale(1.05); }
+
     @keyframes pulse {
-      0% { box-shadow: 0 0 0px rgba(0,198,255,0.6); }
-      50% { box-shadow: 0 0 20px rgba(0,198,255,0.9); }
-      100% { box-shadow: 0 0 0px rgba(0,198,255,0.6); }
+      0%{box-shadow:0 0 0 0 rgba(255,81,47,0.7);}
+      70%{box-shadow:0 0 0 12px rgba(255,81,47,0);}
+      100%{box-shadow:0 0 0 0 rgba(255,81,47,0);}
     }
+
     .step-label {
-      font-size: 14px;
-      color: #bbb;
-      margin-bottom: 15px;
-      font-weight: bold;
-      display: none;
+      text-align:center;
+      font-size:1rem;
+      font-weight:bold;
+      color:#ffdf6c;
+      display:none;
     }
+
     footer {
-      margin-top: auto;
-      padding: 10px;
-      font-size: 12px;
-      color: #aaa;
-      text-align: center;
-      border-top: 1px solid #333;
-    }
-    .step {
-      display: none;
-      text-align: center;
-      width: 100%;
-      flex-direction: column;
-      align-items: center;
-    }
-    .step.active {
-      display: flex;
+      text-align:center;
+      padding:15px;
+      font-size:0.85rem;
+      background:#111;
+      width:100%;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <!-- Header -->
-    <header>
-      <div>PW Free Access</div>
-      <nav>
-        <a href="#">Home</a>
-        <a href="#">About</a>
-      </nav>
-    </header>
+  <!-- Header -->
+  <header>
+    <div class="logo">PW Free Access</div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">About</a>
+    </nav>
+  </header>
 
-    <!-- Steps -->
-    <div id="steps">
-      <!-- Step 1 -->
-      <div class="step active" id="step1">
-        <div class="image-box"><img src="https://iili.io/KIF8S3X.png" alt="Image 1"></div>
-        <div class="image-box"><img src="https://iili.io/KIFS8oQ.png" alt="Image 2"></div>
+  <!-- Main Content -->
+  <div class="content">
+    <!-- Step 1 -->
+    <div class="step" id="step1">
+      <div class="image-box"><img src="https://iili.io/KIF8S3X.png"></div>
+      <div class="image-box"><img src="https://iili.io/KIFS8oQ.png"></div>
+      <div class="image-box"><img src="https://iili.io/KIFUMmJ.jpg"></div>
 
-        <div class="timer" id="timer1">Wait 20s...</div>
-        <button class="btn verify" id="verifyBtn1" onclick="verifyNow(1)">Verify Now</button>
-        <p id="verifyMsg1" style="display:none; font-weight:bold; color:#fff;">✅ Verified! Scroll down to Continue</p>
+      <div class="timer" id="timer1">Wait 20s...</div>
+      <button class="btn verify" id="verifyBtn1" onclick="verifyNow(1)">Verify Now</button>
+      <p id="verifyMsg1" style="display:none;text-align:center;">✅ Verified! Scroll down to Continue</p>
 
-        <div class="image-box"><img src="https://iili.io/KIFUMmJ.jpg" alt="Image 3"></div>
-        <div class="image-box"><img src="https://iili.io/KIFUtku.png" alt="Image 4"></div>
-        <div class="image-box"><img src="https://iili.io/KIFgNZx.png" alt="Image 5"></div>
-        <div class="image-box"><img src="https://iili.io/KIFrBS9.png" alt="Image 6"></div>
+      <div class="image-box"><img src="https://iili.io/KIFUtku.png"></div>
+      <div class="image-box"><img src="https://iili.io/KIFgNZx.png"></div>
+      <div class="image-box"><img src="https://iili.io/KIFrBS9.png"></div>
 
-        <button class="btn continue" id="continueBtn1" onclick="goToStep(2)">Continue</button>
-        <div class="step-label" id="label1">Step 1 of 3</div>
-        <!-- Extra image below Continue -->
-        <div class="image-box"><img src="https://iili.io/KIFrBS9.png" alt="Bottom Image Step 1"></div>
-      </div>
-
-      <!-- Step 2 -->
-      <div class="step" id="step2">
-        <div class="image-box"><img src="https://iili.io/KIFgNZx.png" alt="Image 5"></div>
-        <div class="image-box"><img src="https://iili.io/KIF8S3X.png" alt="Image 1"></div>
-
-        <div class="timer" id="timer2">Wait 20s...</div>
-        <button class="btn verify" id="verifyBtn2" onclick="verifyNow(2)">Verify Now</button>
-        <p id="verifyMsg2" style="display:none; font-weight:bold; color:#fff;">✅ Verified! Scroll down to Continue</p>
-
-        <div class="image-box"><img src="https://iili.io/KIFS8oQ.png" alt="Image 2"></div>
-        <div class="image-box"><img src="https://iili.io/KIFUMmJ.jpg" alt="Image 3"></div>
-        <div class="image-box"><img src="https://iili.io/KIFUtku.png" alt="Image 4"></div>
-        <div class="image-box"><img src="https://iili.io/KIFrBS9.png" alt="Image 6"></div>
-
-        <button class="btn continue" id="continueBtn2" onclick="goToStep(3)">Continue</button>
-        <div class="step-label" id="label2">Step 2 of 3</div>
-        <!-- Extra image below Continue -->
-        <div class="image-box"><img src="https://iili.io/KIFUMmJ.jpg" alt="Bottom Image Step 2"></div>
-      </div>
-
-      <!-- Step 3 -->
-      <div class="step" id="step3">
-        <div class="image-box"><img src="https://iili.io/KIFUMmJ.jpg" alt="Image 3"></div>
-        <div class="image-box"><img src="https://iili.io/KIFUtku.png" alt="Image 4"></div>
-
-        <div class="timer" id="timer3">Wait 20s...</div>
-        <button class="btn verify" id="verifyBtn3" onclick="verifyNow(3)">Verify Now</button>
-        <p id="verifyMsg3" style="display:none; font-weight:bold; color:#fff;">✅ Verified! Scroll down to Continue</p>
-
-        <div class="image-box"><img src="https://iili.io/KIFgNZx.png" alt="Image 5"></div>
-        <div class="image-box"><img src="https://iili.io/KIF8S3X.png" alt="Image 1"></div>
-        <div class="image-box"><img src="https://iili.io/KIFS8oQ.png" alt="Image 2"></div>
-        <div class="image-box"><img src="https://iili.io/KIFrBS9.png" alt="Image 6"></div>
-
-        <button class="btn continue" id="continueBtn3" onclick="alert('🎉 All Steps Completed!')">Continue</button>
-        <div class="step-label" id="label3">Step 3 of 3</div>
-        <!-- Extra image Step 3 -->
-        <div class="image-box"><img src="https://iili.io/KIFrBS9.png" alt="Bottom Image Step 3"></div>
-      </div>
+      <button class="btn continue" id="continueBtn1" onclick="nextStep(1)">Continue</button>
+      <div class="step-label" id="label1">Step 1 of 3</div>
+      <div class="image-box"><img src="https://iili.io/KIFrBS9.png"></div>
     </div>
 
-    <!-- Footer -->
-    <footer>
-      &copy; 2025 PW Free Access. All rights reserved.
-    </footer>
+    <!-- Step 2 -->
+    <div class="step" id="step2" style="display:none;">
+      <div class="image-box"><img src="https://iili.io/KIFUtku.png"></div>
+      <div class="image-box"><img src="https://iili.io/KIFUMmJ.jpg"></div>
+      <div class="image-box"><img src="https://iili.io/KIFS8oQ.png"></div>
+
+      <div class="timer" id="timer2">Wait 20s...</div>
+      <button class="btn verify" id="verifyBtn2" onclick="verifyNow(2)">Verify Now</button>
+      <p id="verifyMsg2" style="display:none;text-align:center;">✅ Verified! Scroll down to Continue</p>
+
+      <div class="image-box"><img src="https://iili.io/KIFgNZx.png"></div>
+      <div class="image-box"><img src="https://iili.io/KIF8S3X.png"></div>
+      <div class="image-box"><img src="https://iili.io/KIFrBS9.png"></div>
+
+      <button class="btn continue" id="continueBtn2" onclick="nextStep(2)">Continue</button>
+      <div class="step-label" id="label2">Step 2 of 3</div>
+      <div class="image-box"><img src="https://iili.io/KIFrBS9.png"></div>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="step" id="step3" style="display:none;">
+      <div class="image-box"><img src="https://iili.io/KIFUMmJ.jpg"></div>
+      <div class="image-box"><img src="https://iili.io/KIFUtku.png"></div>
+
+      <div class="timer" id="timer3">Wait 20s...</div>
+      <button class="btn verify" id="verifyBtn3" onclick="verifyNow(3)">Verify Now</button>
+      <p id="verifyMsg3" style="display:none;text-align:center;">✅ Verified! Scroll down to Continue</p>
+
+      <div class="image-box"><img src="https://iili.io/KIFgNZx.png"></div>
+      <div class="image-box"><img src="https://iili.io/KIF8S3X.png"></div>
+      <div class="image-box"><img src="https://iili.io/KIFS8oQ.png"></div>
+      <div class="image-box"><img src="https://iili.io/KIFrBS9.png"></div>
+
+      <button class="btn continue" id="continueBtn3" onclick="window.location.href='newpage.html'">Continue</button>
+      <div class="step-label" id="label3">Step 3 of 3</div>
+      <div class="image-box"><img src="https://iili.io/KIFrBS9.png"></div>
+    </div>
   </div>
 
+  <!-- Footer -->
+  <footer>
+    © 2025 PW Free Access. All rights reserved.
+  </footer>
+
   <script>
-    function startCountdown(step) {
-      let timeLeft = 20;
-      let timerEl = document.getElementById("timer" + step);
-      let verifyBtn = document.getElementById("verifyBtn" + step);
-
-      let countdown = setInterval(() => {
-        timeLeft--;
-        timerEl.textContent = "Wait " + timeLeft + "s...";
-        if (timeLeft <= 0) {
-          clearInterval(countdown);
-          timerEl.style.display = "none";
-          verifyBtn.style.display = "inline-block";
+    function startTimer(step) {
+      let time=20;
+      const timer=document.getElementById(`timer${step}`);
+      const verifyBtn=document.getElementById(`verifyBtn${step}`);
+      timer.innerText=`Wait ${time}s...`;
+      const interval=setInterval(()=>{
+        time--;
+        timer.innerText=`Wait ${time}s...`;
+        if(time<=0){
+          clearInterval(interval);
+          verifyBtn.style.display="block";
+          timer.style.display="none";
         }
-      }, 1000);
+      },1000);
     }
 
-    function verifyNow(step) {
-      document.getElementById("verifyBtn" + step).style.display = "none";
-      document.getElementById("verifyMsg" + step).style.display = "block";
-      document.getElementById("continueBtn" + step).style.display = "inline-block";
-      document.getElementById("label" + step).style.display = "block";
+    function verifyNow(step){
+      document.getElementById(`verifyMsg${step}`).style.display="block";
+      document.getElementById(`continueBtn${step}`).style.display="block";
+      document.getElementById(`label${step}`).style.display="block";
     }
 
-    function goToStep(step) {
-      document.querySelectorAll(".step").forEach(s => s.classList.remove("active"));
-      document.getElementById("step" + step).classList.add("active");
-      startCountdown(step);
+    function nextStep(step){
+      document.getElementById(`step${step}`).style.display="none";
+      document.getElementById(`step${step+1}`).style.display="block";
+      startTimer(step+1);
     }
 
-    startCountdown(1);
+    window.onload=()=>{ startTimer(1); };
   </script>
 </body>
 </html>
