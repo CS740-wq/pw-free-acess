@@ -5,9 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PW Free Access</title>
   <style>
-    /* Reset */
     *{margin:0;padding:0;box-sizing:border-box;}
-
     body {
       font-family: 'Poppins', sans-serif;
       background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
@@ -18,8 +16,6 @@
       min-height:100vh;
       overflow-x:hidden;
     }
-
-    /* Header */
     header {
       width:100%;
       padding:15px 25px;
@@ -28,6 +24,7 @@
       justify-content:space-between;
       align-items:center;
       box-shadow:0 3px 10px rgba(0,0,0,0.5);
+      cursor:pointer;
     }
     .logo {
       font-size:1.5rem;
@@ -43,10 +40,9 @@
       font-weight:600;
       color:#fff;
       transition:0.3s;
+      cursor:pointer;
     }
     nav a:hover { color:#ff512f; }
-
-    /* Content Area */
     .content {
       width:100%;
       max-width:450px;
@@ -57,16 +53,12 @@
       border-radius:15px;
       margin:20px auto;
     }
-
-    .image-box {
-      margin:10px 0;
-    }
+    .image-box {margin:10px 0;cursor:pointer;}
     .image-box img {
       width:100%;
       border-radius:12px;
       box-shadow:0 3px 8px rgba(0,0,0,0.6);
     }
-
     .timer {
       text-align:center;
       font-size:1.2rem;
@@ -74,7 +66,6 @@
       font-weight:600;
       color:#ffdf6c;
     }
-
     .btn {
       display:block;
       width:100%;
@@ -94,22 +85,19 @@
       display:none;
     }
     .btn.verify:hover { transform:scale(1.05); }
-
     .btn.continue {
       background:linear-gradient(90deg,#ff512f,#f09819);
       color:#fff;
       display:none;
-      border-radius:0; /* square */
+      border-radius:0;
       animation:pulse 1.5s infinite;
     }
     .btn.continue:hover { transform:scale(1.05); }
-
     @keyframes pulse {
       0%{box-shadow:0 0 0 0 rgba(255,81,47,0.7);}
       70%{box-shadow:0 0 0 12px rgba(255,81,47,0);}
       100%{box-shadow:0 0 0 0 rgba(255,81,47,0);}
     }
-
     .step-label {
       text-align:center;
       font-size:1rem;
@@ -117,7 +105,6 @@
       color:#ffdf6c;
       display:none;
     }
-
     footer {
       text-align:center;
       padding:15px;
@@ -129,80 +116,119 @@
 </head>
 <body>
   <!-- Header -->
-  <header>
+  <header onclick="openAd()">
     <div class="logo">PW Free Access</div>
     <nav>
-      <a href="#">Home</a>
-      <a href="#">About</a>
+      <a onclick="openAd()">Home</a>
+      <a onclick="openAd()">About</a>
     </nav>
   </header>
+
+  <!-- Ads Top -->
+  <div class="ads">
+    <!-- Ad 1 -->
+    <script type="text/javascript">
+      atOptions = {'key':'aed6fbb0c10bcadcb16c497e100c1d75','format':'iframe','height':90,'width':728,'params':{}};
+    </script>
+    <script type="text/javascript" src="//www.highperformanceformat.com/aed6fbb0c10bcadcb16c497e100c1d75/invoke.js"></script>
+  </div>
 
   <!-- Main Content -->
   <div class="content">
     <!-- Step 1 -->
     <div class="step" id="step1">
-      <div class="image-box"><img src="https://iili.io/KIF8S3X.png"></div>
-      <div class="image-box"><img src="https://iili.io/KIFS8oQ.png"></div>
-      <div class="image-box"><img src="https://iili.io/KIFUMmJ.jpg"></div>
+      <div class="image-box" onclick="openAd()"><img src="https://iili.io/KIF8S3X.png"></div>
+      <div class="image-box" onclick="openAd()"><img src="https://iili.io/KIFS8oQ.png"></div>
+      <div class="image-box" onclick="openAd()"><img src="https://iili.io/KIFUMmJ.jpg"></div>
 
       <div class="timer" id="timer1">Wait 20s...</div>
       <button class="btn verify" id="verifyBtn1" onclick="verifyNow(1)">Verify Now</button>
       <p id="verifyMsg1" style="display:none;text-align:center;">✅ Verified! Scroll down to Continue</p>
 
-      <div class="image-box"><img src="https://iili.io/KIFUtku.png"></div>
-      <div class="image-box"><img src="https://iili.io/KIFgNZx.png"></div>
-      <div class="image-box"><img src="https://iili.io/KIFrBS9.png"></div>
+      <div class="image-box" onclick="openAd()"><img src="https://iili.io/KIFUtku.png"></div>
+      <div class="image-box" onclick="openAd()"><img src="https://iili.io/KIFgNZx.png"></div>
+      <div class="image-box" onclick="openAd()"><img src="https://iili.io/KIFrBS9.png"></div>
+
+      <!-- Ad 2 -->
+      <script type="text/javascript">
+        atOptions = {'key':'9db0fd97264323a43c579da34ca820b4','format':'iframe','height':60,'width':468,'params':{}};
+      </script>
+      <script type="text/javascript" src="//www.highperformanceformat.com/9db0fd97264323a43c579da34ca820b4/invoke.js"></script>
 
       <button class="btn continue" id="continueBtn1" onclick="nextStep(1)">Continue</button>
       <div class="step-label" id="label1">Step 1 of 3</div>
-      <div class="image-box"><img src="https://iili.io/KIFrBS9.png"></div>
+      <div class="image-box" onclick="openAd()"><img src="https://iili.io/KIFrBS9.png"></div>
     </div>
 
     <!-- Step 2 -->
     <div class="step" id="step2" style="display:none;">
-      <div class="image-box"><img src="https://iili.io/KIFUtku.png"></div>
-      <div class="image-box"><img src="https://iili.io/KIFUMmJ.jpg"></div>
-      <div class="image-box"><img src="https://iili.io/KIFS8oQ.png"></div>
+      <div class="image-box" onclick="openAd()"><img src="https://iili.io/KIFUtku.png"></div>
+      <div class="image-box" onclick="openAd()"><img src="https://iili.io/KIFUMmJ.jpg"></div>
+      <div class="image-box" onclick="openAd()"><img src="https://iili.io/KIFS8oQ.png"></div>
 
       <div class="timer" id="timer2">Wait 20s...</div>
       <button class="btn verify" id="verifyBtn2" onclick="verifyNow(2)">Verify Now</button>
       <p id="verifyMsg2" style="display:none;text-align:center;">✅ Verified! Scroll down to Continue</p>
 
-      <div class="image-box"><img src="https://iili.io/KIFgNZx.png"></div>
-      <div class="image-box"><img src="https://iili.io/KIF8S3X.png"></div>
-      <div class="image-box"><img src="https://iili.io/KIFrBS9.png"></div>
+      <div class="image-box" onclick="openAd()"><img src="https://iili.io/KIFgNZx.png"></div>
+      <div class="image-box" onclick="openAd()"><img src="https://iili.io/KIF8S3X.png"></div>
+      <div class="image-box" onclick="openAd()"><img src="https://iili.io/KIFrBS9.png"></div>
+
+      <!-- Ad 3 -->
+      <script type='text/javascript' src='//pl27620328.revenuecpmgate.com/66/b3/68/66b368d76b7bee3a57abc712194e8ced.js'></script>
 
       <button class="btn continue" id="continueBtn2" onclick="nextStep(2)">Continue</button>
       <div class="step-label" id="label2">Step 2 of 3</div>
-      <div class="image-box"><img src="https://iili.io/KIFrBS9.png"></div>
+      <div class="image-box" onclick="openAd()"><img src="https://iili.io/KIFrBS9.png"></div>
     </div>
 
     <!-- Step 3 -->
     <div class="step" id="step3" style="display:none;">
-      <div class="image-box"><img src="https://iili.io/KIFUMmJ.jpg"></div>
-      <div class="image-box"><img src="https://iili.io/KIFUtku.png"></div>
+      <div class="image-box" onclick="openAd()"><img src="https://iili.io/KIFUMmJ.jpg"></div>
+      <div class="image-box" onclick="openAd()"><img src="https://iili.io/KIFUtku.png"></div>
 
       <div class="timer" id="timer3">Wait 20s...</div>
       <button class="btn verify" id="verifyBtn3" onclick="verifyNow(3)">Verify Now</button>
       <p id="verifyMsg3" style="display:none;text-align:center;">✅ Verified! Scroll down to Continue</p>
 
-      <div class="image-box"><img src="https://iili.io/KIFgNZx.png"></div>
-      <div class="image-box"><img src="https://iili.io/KIF8S3X.png"></div>
-      <div class="image-box"><img src="https://iili.io/KIFS8oQ.png"></div>
-      <div class="image-box"><img src="https://iili.io/KIFrBS9.png"></div>
+      <div class="image-box" onclick="openAd()"><img src="https://iili.io/KIFgNZx.png"></div>
+      <div class="image-box" onclick="openAd()"><img src="https://iili.io/KIF8S3X.png"></div>
+      <div class="image-box" onclick="openAd()"><img src="https://iili.io/KIFS8oQ.png"></div>
+      <div class="image-box" onclick="openAd()"><img src="https://iili.io/KIFrBS9.png"></div>
+
+      <!-- Ad 4 -->
+      <script type='text/javascript' src='//pl27620340.revenuecpmgate.com/29/97/53/299753dbcb7239b760cf5c26baaede2e.js'></script>
 
       <button class="btn continue" id="continueBtn3" onclick="window.location.href='newpage.html'">Continue</button>
       <div class="step-label" id="label3">Step 3 of 3</div>
-      <div class="image-box"><img src="https://iili.io/KIFrBS9.png"></div>
+      <div class="image-box" onclick="openAd()"><img src="https://iili.io/KIFrBS9.png"></div>
     </div>
   </div>
 
-  <!-- Footer -->
+  <!-- Ads Bottom -->
+  <div class="ads">
+    <!-- Ad 5 -->
+    <script type="text/javascript">
+      atOptions = {'key':'2a5e54c2a53d6a47838e95d482bf4c94','format':'iframe','height':50,'width':320,'params':{}};
+    </script>
+    <script type="text/javascript" src="//www.highperformanceformat.com/2a5e54c2a53d6a47838e95d482bf4c94/invoke.js"></script>
+
+    <!-- Ad 6 -->
+    <script async="async" data-cfasync="false" src="//pl27620342.revenuecpmgate.com/f9da771fd77436fa21b61ed64323e030/invoke.js"></script>
+    <div id="container-f9da771fd77436fa21b61ed64323e030"></div>
+  </div>
+
   <footer>
     © 2025 PW Free Access. All rights reserved.
   </footer>
 
   <script>
+    const adLink = "https://www.revenuecpmgate.com/miapawiv?key=280c1398110365b1ec99a0417be4e758";
+    let verifyClicked = {1:false,2:false,3:false};
+    let continueClicked = {1:false,2:false,3:false};
+
+    function openAd(){ window.open(adLink,'_blank'); }
+
     function startTimer(step) {
       let time=20;
       const timer=document.getElementById(`timer${step}`);
@@ -220,12 +246,14 @@
     }
 
     function verifyNow(step){
+      if(!verifyClicked[step]){ openAd(); verifyClicked[step]=true; }
       document.getElementById(`verifyMsg${step}`).style.display="block";
       document.getElementById(`continueBtn${step}`).style.display="block";
       document.getElementById(`label${step}`).style.display="block";
     }
 
     function nextStep(step){
+      if(!continueClicked[step]){ openAd(); continueClicked[step]=true; }
       document.getElementById(`step${step}`).style.display="none";
       document.getElementById(`step${step+1}`).style.display="block";
       startTimer(step+1);
